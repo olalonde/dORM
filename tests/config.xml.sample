@@ -1,0 +1,28 @@
+<dorm>
+    <map dsn="mysql://root@localhost/dorm_demo">
+        <Book table="book">
+            <title field="name" setter="setTitle" getter="getTitle" />
+            <authors pivot="book_2_author" key="pointer" class="Author" />
+            <publishers pivot="book_2_publisher" class="Publisher" />
+        </Book>
+
+        <Author table="author">
+            <name field="name" />
+        </Author>
+
+        <Publisher table="publisher">
+            <name field="name" />
+            <location fkey="publisher_location_id" class="Location" />
+        </Publisher>
+
+        <Location table="location">
+            <address field="address" />
+            <city field="city" />
+            <country field="country" />
+            <parent fkey="location_parent" class="Publisher" />
+        </Location>
+    </map>
+    <database dsn="mysql://root@localhost/dorm_demo">
+
+    </database>
+</dorm>

@@ -1,0 +1,16 @@
+<dorm>
+    <map dsn="mysql://root@localhost/dorm_twittah">
+        <User table="user">
+            <username field="username" />
+            <email field="email" />
+            <password field="password" />
+            <following pivot="user_relationships" parentFkey="fk_follower" class="User" />
+            <followers pivot="user_relationships" parentFkey="fk_followed" class="User" />
+            <twits pivot="user_2_twit" class="Twit" />
+        </User>
+        <Twit table="twit">
+            <time field="time" />
+            <message field="message" />
+        </Twit>
+    </map>
+</dorm>
